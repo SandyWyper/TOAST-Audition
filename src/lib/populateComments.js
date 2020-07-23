@@ -15,8 +15,11 @@ export const populateComments = (comments) => {
     const sortedCommentReplys = sortByTimeStamp(commentReplys);
 
     const builtReplys = sortedCommentReplys.map((reply) => {
-      return `<p class="author">${reply.author}</p><p class="time">${formatTimeStamp(reply.timeStamp)}</p><div class="reply-comment">${reply.comment}</div>`;
+      return `<div class="d-flex"><p class="author">${reply.author}</p><p class="time">${formatTimeStamp(reply.timeStamp)}</p></div><div class="reply-comment">${
+        reply.comment
+      }</div>`;
     });
+
     if (builtReplys.length > 0) {
       return `<div class="mb-5"><div><div class="d-flex"><p class="author">${comment.author}</p><p class="time">${formatTimeStamp(
         comment.timeStamp
