@@ -1,5 +1,6 @@
 import allComments from '../JSON/comments.json';
 import { populateComments } from './lib/populateComments';
+import { removeClass } from './lib/removeClass';
 
 // ---------------------------------------------------------------- Article comments
 // get DOM comments section
@@ -16,6 +17,18 @@ if (commentsArray.length > 0) {
   commentsSection.innerHTML += populateComments(commentsArray);
 } else {
   commentsSection.innerHTML += `<p>no comments</p>`;
+}
+
+// ---------------------------------------------------------------- Read more comments
+
+const readMore = document.querySelector('#read-more-comments');
+readMore.addEventListener('click', revealComments);
+
+function revealComments() {
+  removeClass(commentsSection, 'collapsed');
+  removeClass(document.querySelector('.overlay'), 'overlay');
+  readMore.removeEventListener('click', revealComments);
+  readMore.remove();
 }
 
 // ---------------------------------------------------------------- Newsletter signup
